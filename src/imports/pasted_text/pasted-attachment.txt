@@ -1,0 +1,452 @@
+Vytvoř kompletní vícestránkový web pro ARMANAK Accounts Advisory CZ —
+českou finanční poradenskou firmu z Brna, která působí od roku 1999.
+Zakladatelka je Sylvie Riederová PhD.
+
+---
+
+STRUKTURA WEBU (4 stránky):
+1. index.html — Úvod / Home
+2. o-nas.html — O nás / Tým
+3. sluzby.html — Služby
+4. kontakt.html — Kontakt
+
+Sdílené soubory: styles.css + main.js (navigace, animace, footer)
+
+---
+
+DESIGNOVÝ STYL — HIGH-END SAAS / MODERN FINTECH
+
+Inspirace: Stripe, Linear, Notion, Lemon Squeezy — světlý, čistý,
+vzdušný minimalismus s prémiovou typografií a jemnými akcenty.
+
+VIBE: Jako by McKinsey potkalo moderní fintech startup.
+Důvěryhodné, chytré, čisté — ne nudné účetní webovky.
+
+---
+
+BARVY
+
+Pozadí: #FFFFFF (primární), #F8FAFC (sekce), #F1F5F9 (karty)
+Text: #0F172A (hlavní), #475569 (sekundární), #94A3B8 (tertiary)
+
+Akcentní gradient (použít sparingly na CTA, badges, highlights):
+- Modrá → Tyrkysová: #2563C4 → #06B6D4
+- Světlý gradient bg: linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)
+
+Brand modrá: #2563C4
+Brand cyan: #06B6D4
+Borders: #E2E8F0 (jemné linky)
+Success green: #10B981
+
+---
+
+TYPOGRAFIE
+
+Fonty z Google Fonts:
+- Display/Nadpisy: "Plus Jakarta Sans" (weights: 400, 600, 700, 800)
+- Body: "Inter" (weights: 400, 500)
+  POZOR: Inter jen pro body text, ne pro nadpisy
+
+Hierarchie:
+- H1 hero: clamp(3rem, 6vw, 5.5rem), weight 800, line-height 1.05,
+  letter-spacing -0.03em, color #0F172A
+- H2 sekce: clamp(2rem, 4vw, 3.2rem), weight 700, letter-spacing -0.02em
+- H3 karty: 1.25rem, weight 600
+- Body: 1rem, weight 400, line-height 1.75, color #475569
+- Labels/caps: 0.7rem, weight 600, letter-spacing 0.12em, uppercase,
+  color #2563C4
+
+---
+
+VIZUÁLNÍ PRINCIPY
+
+1. WHITESPACE — Extrémně štědrý. Sekce padding: 120px 0.
+   Mezi elementami vždy dost vzduchu.
+
+2. KARTY — Bílé, border: 1px solid #E2E8F0, border-radius: 16px,
+   subtle shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)
+   Hover: shadow zesílí + translateY(-4px)
+
+3. GRADIENT ACCENTS — Použít jen na:
+   - CTA tlačítka (gradient fill)
+   - Badge/label tagy
+   - Dekorativní abstract shapes v pozadí hero sekce
+   - Gradient text pro klíčová slova v nadpisech
+   CSS: background: linear-gradient(135deg, #2563C4, #06B6D4);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+4. ABSTRACT SHAPES v hero:
+   - 2–3 velké rozmazané kruhy v pozadí (position absolute)
+   - Barvy: rgba(37,99,196,0.06) a rgba(6,182,212,0.08)
+   - filter: blur(80px); border-radius: 50%
+   - Jemné, skoro neviditelné — přidají hloubku bez rušení
+
+5. LINE-ART IKONY — SVG, stroke-based, stroke-width 1.5px,
+   barva #2563C4 nebo #06B6D4. Žádné filled icons.
+   Každá ikona v kruhovém kontejneru:
+   width: 48px, background: #EFF6FF, border-radius: 12px, padding: 12px
+
+6. SEKCE ODDĚLOVAČE — jemná linka 1px solid #E2E8F0
+   nebo přechod background: #FFFFFF → #F8FAFC → #FFFFFF
+
+7. STATISTIKY — Velká čísla s gradient textem, malý popisek pod nimi.
+   Font: Plus Jakarta Sans, weight 800, gradient text effect
+
+8. TLAČÍTKA:
+   Primary: gradient bg (#2563C4 → #06B6D4), white text, border-radius 100px,
+   padding 14px 28px, font-weight 600, font-size 0.88rem, letter-spacing 0.02em
+   Hover: shadow 0 8px 24px rgba(37,99,196,0.3) + translateY(-1px)
+
+   Secondary/outline: transparent bg, border: 1.5px solid #E2E8F0,
+   color #0F172A, hover: border-color #2563C4, color #2563C4
+
+9. NAVIGACE:
+   - Sticky, výška 68px
+   - Bílé pozadí + border-bottom: 1px solid #E2E8F0
+   - Logo vlevo (ARMANAK text + ikona)
+   - Linky uprostřed nebo vpravo: font-size 0.88rem, color #475569,
+     hover: color #0F172A
+   - CTA tlačítko úplně vpravo (gradient fill, malé)
+   - Žádný backdrop blur — čistá bílá
+
+10. BADGES/LABELS nad nadpisy sekcí:
+    Malý pill: background linear-gradient(#EFF6FF, #ECFEFF),
+    border: 1px solid rgba(37,99,196,0.15),
+    font-size 0.7rem, color #2563C4, font-weight 600,
+    letter-spacing 0.1em, uppercase, border-radius 100px, padding 4px 12px
+    Příklad: "SLUŽBY & KOMPETENCE" nebo "PROČ ARMANAK"
+
+---
+
+GLOBÁLNÍ ELEMENTY
+
+NAVIGACE (sticky, všechny stránky):
+- Logo vlevo: SVG ikona (trojúhelník + bar chart v kruhu, stroke cyan)
+  + "ARMANAK" text (Plus Jakarta Sans, weight 800, #0F172A)
+  + podtext "Accounts Advisory" (#94A3B8, 0.65rem)
+- Linky: Úvod | O nás | Služby | Kontakt
+- Vpravo: CTA tlačítko "📅 Rezervovat" (gradient, small)
+- Mobile: hamburger → fullscreen bílé overlay menu
+
+FOOTER (světlý, čistý):
+- Bílé pozadí, border-top: 1px solid #E2E8F0
+- Horní část: velký klikatelný email jako hero text
+  font: Plus Jakarta Sans 700, 2.5rem, gradient text efekt
+  hover: gradient zesílí
+- 4 sloupce: Brand info | Navigace | Služby | Kontakt
+- Dolní řádek: copyright + jemný text
+- Padding: 80px 0 40px
+
+---
+
+STRÁNKA 1: index.html — HOME
+
+HERO SEKCE (min-height: 90vh, center vertically):
+- Abstract shapes v pozadí (2 velké rozmazané kruhy)
+- Badge nad nadpisem: "FINANČNÍ VEDENÍ FIREM · OD ROKU 1999"
+- H1 (dvouřádkový):
+  "Více než" (normální, #0F172A)
+  "účetnictví." (gradient text: #2563C4 → #06B6D4)
+  Velikost: clamp(3.5rem, 7vw, 6rem), weight 800
+- Perex (max-width 540px, centrovaný nebo vlevo):
+  "Přetváříme strohou abecedu účetnictví v jasný jazyk vašich financí.
+  Jako váš finanční partner vám pomáháme rozhodovat se s jistotou."
+  font-size 1.1rem, color #475569, line-height 1.8
+- CTA skupina:
+  * Primární tlačítko: "Domluvit konzultaci" (gradient)
+  * Sekundární: "Naše služby →" (outline nebo text link)
+  * Pod tlačítky: malý text "nebo" + link "rezervujte termín přímo →"
+    (font-size 0.82rem, color #94A3B8)
+- Vpravo od textu (desktop, 2-column layout):
+  Abstraktní ilustrace — SVG kompozice:
+  * Velký světlý kruh (#EFF6FF, border: 1px solid #DBEAFE)
+  * Uvnitř: stylizovaný dashboard mockup nebo finanční grafy
+  * Jednoduchý, čistý, line-art styl
+  * Nebo: floating karty s finančními metrikami (revenue, cashflow)
+    jako glassmorphism nebo čisté bílé karty s čísly
+
+SOCIAL PROOF PRUH (pod hero, světle šedé pozadí):
+- "Finanční partner firem od roku 1999"
+- 3 inline statistiky: "25+ let praxe" · "100% digitalizace" · "Brno & online"
+- Jemný border-top a border-bottom #E2E8F0
+
+STATS SEKCE (4 čísla v řadě, bílé pozadí):
+- Čísla s gradient textem (Plus Jakarta Sans 800):
+  "25" → "Let praxe"
+  "360°" → "Pohled na finance"
+  "100%" → "Digitalizace"
+  "1" → "Finanční partner"
+- Jemný vertical separator mezi čísly (1px solid #E2E8F0)
+- Hover: číslo se lehce zvětší (scale 1.02)
+
+CO SE ZMĚNILO (alternating bg #F8FAFC):
+- Badge: "NOVÝ POHLED"
+- H2: "Finanční přehled jako konkurenční výhoda."
+- 3 srovnávací karty (grid 3 columns):
+  Každá karta:
+  * Nahoře: šedý tag "Dříve" + italic text starého přístupu
+  * Gradient divider linka (1px, gradient)
+  * Dole: bold text nového přístupu
+  * Levý border: 3px gradient
+  Obsah:
+  1. "Účetnictví = povinnost" → "Finanční přehled = konkurenční výhoda"
+  2. "Zpětný pohled na data" → "Plánování a prognózování do budoucna"
+  3. "Specialista pro jednu oblast" → "Komplexní finanční partner firmy"
+
+PŘEHLED SLUŽEB (bílé pozadí):
+- Badge: "SLUŽBY & KOMPETENCE"
+- H2: "Celý finanční ekosystém pod jednou střechou."
+- Subtext: "Všechny služby fungují dohromady — jeden integrovaný pohled."
+- 6 feature karet (grid 3×2):
+  Každá karta (bílá, border, shadow, hover efekt):
+  * Ikona v modrém kruhu (line-art SVG)
+  * Název (H3, weight 600)
+  * Krátký popis (2 řádky, #475569)
+  Obsah:
+  1. Účetnictví — Vedení účtu, uzávěrky, vykaznictví, kontroling
+  2. Daně & DPH — Daňové plánování, optimalizace, přiznání
+  3. Mzdy & HR — Výpočet mezd, odvody, mzdové audity
+  4. Budgety & Prognózy — Roční plány, cash-flow, scénáře
+  5. Finanční systémy — SW, digitalizace, automatizace
+  6. CFO Poradenství — Strategické rozhodování, investice
+- Pod gridem: link "Zobrazit všechny služby →"
+
+ALTERNATING FEATURE SEKCE (text + visual):
+
+Blok A (bg bílá): Text vlevo, Visual vpravo
+- H2: "Od chaosu k systémové finanční jasnosti."
+- Text: Popis 4-krokového procesu
+  4 kroky jako čistý stepper:
+  1. Audit stavu → 2. Návrh systému → 3. Implementace → 4. Průběžný CFO
+  (horizontální nebo vertikální, spojené tenkou linkou)
+- Výsledek callout box:
+  Světle modrý bg (#EFF6FF), border-left: 3px gradient,
+  text: "Finanční data, která chápete, a která vám říkají, co dělat dál."
+- Visual: SVG process diagram nebo čistý mockup dashboardu
+
+Blok B (bg #F8FAFC): Visual vlevo, Text vpravo
+- H2: "Víte, kam vaše firma míří?"
+- Text: Popis proaktivního plánování
+- 3 checkmark výhody:
+  * Roční rozpočet a business plán
+  * 6měsíční prognóza cash-flow
+  * Měsíční tracking: Plán vs. skutečnost
+- Citát v callout boxu:
+  "Firmy s jasným finančním plánem rostou 2× rychleji."
+  — Sylvie Riederová, ARMANAK CZ
+- Visual: Jednoduchý SVG bar chart (Plan vs. Skutečnost)
+
+PROČ ARMANAK (bg gradient: #EFF6FF → #ECFEFF):
+- Badge: "PROČ NÁS KLIENTI VOLÍ"
+- H2: "Finanční jistota začíná partnerstvím."
+- 4 benefit karty (bílé, shadow):
+  🏆 PRAXE — 25 let reálných zkušeností s českou ekonomikou
+  🔗 KOMPLEXNOST — Vidíme celé finance firmy — vše propojeno
+  ⚡ TECHNOLOGIE — Cloudové nástroje, automatizace, digitalizace
+  🎯 JEDNODUCHOST — Jeden kontakt, žádné přeposílání
+
+CITÁT SEKCE (bílé pozadí, centrovaný):
+- Velký gradient dekorativní uvozovací znak
+- Citát: Plus Jakarta Sans, 1.6rem, italic, #0F172A, max-width 700px
+  "Správná čísla jsou pro nás základ, ale náš cíl je vyšší.
+  V Armanaku přetváříme strohou abecedu účetnictví v jasný jazyk
+  vašich financí."
+- Podpis: avatar placeholder + "Sylvie Riederová PhD., zakladatelka ARMANAK"
+
+BOOKING / CTA SEKCE (bg: gradient #EFF6FF → #ECFEFF):
+- H2: "Rezervujte si konzultaci"
+- Subline: "Bezplatná. Nezávazná. Online nebo v Brně."
+- 3 benefit pills (inline):
+  "🕐 30 minut" · "💬 Online nebo Brno" · "✅ Zdarma"
+- Velké CTA tlačítko (gradient, large)
+  Text: "📅 Vybrat termín"
+  href="[GOOGLE_CALENDAR_BOOKING_LINK]" target="_blank"
+  <!-- DOPLŇ BOOKING LINK Z GOOGLE CALENDAR -->
+- Pod tlačítkem: "nebo" + text link "napište nám →"
+
+---
+
+STRÁNKA 2: o-nas.html — O NÁS
+
+PAGE HERO (kratší, 50vh):
+- Badge: "O NÁS"
+- H1: "Finanční jistota začíná partnerstvím."
+- Subline gradient text: "25 let · Brno & online · ARMANAK CZ"
+
+MISE SEKCE (2-column):
+Vlevo: Text
+- Badge: "NAŠE MISE"
+- H2: "Více než účetnictví."
+- 3 odstavce o filozofii (proaktivní přístup, propojené služby,
+  lidský přístup) s klíčovými slovy tučně
+
+Vpravo: Timeline
+- Vertikální timeline od 1999 do 2025
+- Každý milestone: rok (gradient text, bold) + popis
+- Tenká gradient linka propojuje body
+- Bod: malý vyplněný kruh (#2563C4)
+  1999 — Sylvie Riederová PhD. zakládá ARMANAK v Brně
+  2005–2010 — Rozšíření o daňové a mzdové služby
+  2015 — Pavla Riederová, digitalizace procesů
+  2019–2021 — Cloudová řešení, 100% digitalizace
+  2025 — 25 let praxe, CFO as a Service
+
+TÝM SEKCE (bg #F8FAFC):
+- Badge: "TÝM"
+- H2: "Lidé za ARMANAK"
+- 2 team karty (bílé, shadow, hover):
+  Každá karta:
+  * Avatar kruh: gradient bg, iniciály (SR / PR), 72px
+  * Jméno: H3, weight 700
+  * Role: gradient text, caps, small
+  * Bio text (2–3 věty)
+  * LinkedIn pill button (outline)
+
+  Sylvie Riederová PhD. — Zakladatelka & CFO poradkyně
+  "25 let v české finanční praxi. Expertka na strategické
+  finanční řízení a daňovou optimalizaci."
+
+  Pavla Riederová — Finanční specialistka
+  "Odbornice na účetnictví, mzdy a finanční systémy.
+  Specialistka na digitalizaci procesů."
+
+HODNOTY SEKCE (bílé):
+- Badge: "NAŠE HODNOTY"
+- H2: "Proč nás klienti volí"
+- 4 feature karty s line-art ikonami:
+  🏆 Praxe · 🔗 Komplexnost · ⚡ Technologie · 🎯 Jednoduchost
+
+---
+
+STRÁNKA 3: sluzby.html — SLUŽBY
+
+PAGE HERO:
+- H1: "Celý finanční ekosystém vaší firmy."
+- Subline: "Všechny služby fungují dohromady."
+
+6× SERVICE DETAIL BLOK (alternating layout, každý ~100px padding):
+
+Každý blok obsahuje:
+- Velké pozadní číslo (01–06, opacity 0.04, gradient, absolutní pozice)
+- Badge s číslem a názvem: "01 / ÚČETNICTVÍ"
+- H2: Název služby
+- Perex (1–2 věty)
+- Seznam 4–5 bodů (s checkmark ikonami v gradient barvě)
+- "Pro koho" pill tag
+- Visual blok (svg ilustrace nebo stylizovaný mockup)
+
+Střídání: text vlevo / vpravo (každý liché / sudé)
+Střídání bg: #FFFFFF / #F8FAFC
+
+Obsah:
+1. ÚČETNICTVÍ — Vedení účtu, uzávěrky, vykaznictví, kontroling.
+   Body: Podvojné účetnictví · Roční uzávěrky · Vykaznictví ·
+   Kontroling · Audit zastoupení
+   Pro koho: Firmy všech velikostí, OSVČ, startupy
+
+2. DANĚ & DPH — Daňové plánování, optimalizace, přiznání, kontroly.
+   Body: Daňové plánování · Optimalizace zátěže ·
+   Přiznání a hlášení · Finanční kontroly · Mezinárodní daně
+   Pro koho: Firmy s komplexní daňovou situací
+
+3. MZDY & HR — Výpočet mezd, odvody, mzdové audity.
+   Body: Měsíční zpracování · Odvody pojistného ·
+   Roční zúčtování · Mzdové audity · Zastoupení ČSSZ
+   Pro koho: Firmy s 1–200 zaměstnanci
+
+4. BUDGETY & PROGNÓZY — Roční plány, cash-flow prognóza, scénářová analýza.
+   Body: Roční rozpočet · Plán vs. skutečnost ·
+   Cash-flow prognóza (6 měsíců) · Scénářová analýza · KPI dashboard
+   Citát callout: "Firmy s jasným plánem rostou 2× rychleji."
+
+5. FINANČNÍ SYSTÉMY — Nastavení procesů, SW, automatizace.
+   4-krokový stepper: Audit → Návrh → Implementace → CFO
+   Deliverables: Reporty · Review · Rizika · Prognóza
+   Pro koho: Firmy bez jasných finančních procesů
+
+6. CFO PORADENSTVÍ — Strategické řízení bez plného úvazku.
+   Body: Měsíční review · Prognóza 6 měsíců · Strategická doporučení ·
+   Investiční analýzy · Příprava pro investory
+   Callout box (gradient bg): "Nemusíte mít celého CFO na plný úvazek."
+   Tag: "CFO as a Service — flexibilní & efektivní"
+
+BOOKING SEKCE (bg gradient, před footrem):
+- H2: "Rezervujte si konzultaci"
+- Benefit pills + velké CTA
+- href="[GOOGLE_CALENDAR_BOOKING_LINK]" target="_blank"
+  <!-- DOPLŇ BOOKING LINK Z GOOGLE CALENDAR -->
+
+---
+
+STRÁNKA 4: kontakt.html — KONTAKT
+
+BOOKING HERO (první sekce, velká, gradient bg):
+- H1: "Rezervujte si konzultaci"
+- Subline: "Bezplatná. Nezávazná. Online nebo v Brně."
+- 3 benefit pills
+- Velké CTA tlačítko "📅 Vybrat termín"
+  href="[GOOGLE_CALENDAR_BOOKING_LINK]" target="_blank"
+  <!-- DOPLŇ BOOKING LINK Z GOOGLE CALENDAR -->
+- Menší text pod: "Raději napište ↓"
+
+KONTAKTNÍ SEKCE (2-column, bg bílá):
+Vlevo — formulář v kartě (bílá, shadow, border-radius 20px):
+- Nadpis: "Napište nám" + subtext "Ozveme se do 24 hodin."
+- Pole (label nahoře, input dole):
+  Jméno a příjmení* | Firma (řada 2 columns)
+  E-mail* | Telefon (řada 2 columns)
+  Jak vám můžeme pomoci? (textarea, min-height 120px)
+- GDPR checkbox s linkem
+- Submit button (gradient, plná šířka, velké)
+- Success state: zelená check ikona + "Děkujeme! Ozveme se do 24 hodin."
+  (animace fadeIn)
+
+Vpravo — kontaktní info:
+- Nadpis: "Kontaktní informace"
+- 4 info položky (ikona + label + hodnota):
+  👤 Tým: Sylvie Riederová PhD. & Pavla Riederová
+  📍 Sídlo: Brno, Česká republika (+ online)
+  🌐 Web: armanak.cz
+  🕐 Hodiny: Po–Pá 8:00–17:00
+- Callout karta (gradient bg, border-radius 16px):
+  "25 let praxe | Brno & online
+  Jeden kontakt pro vše. Odpovíme do 24 hodin."
+
+PROČ NÁS KONTAKTOVAT (bg #F8FAFC):
+- 3 benefit karty:
+  ⚡ Rychlá odpověď — do 24 hodin
+  🎁 Zdarma — první konzultace bez závazků
+  🔑 Jeden partner — žádné přeposílání
+
+---
+
+SCROLL ANIMACE (Intersection Observer):
+- Všechny sekce: opacity 0 → 1, translateY(24px) → 0
+- Karty: staggered (každá +80ms delay)
+- Čísla ve stats: count-up animace
+- Transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1)
+
+HOVER MIKROINTERAKCE:
+- Karty: translateY(-4px) + shadow zesílí
+- CTA tlačítka: shadow + translateY(-1px)
+- Nav linky: color transition 0.2s
+- Email v footeru: gradient text zesílí
+
+TECHNICKÉ POŽADAVKY:
+- 4 HTML soubory + styles.css + main.js
+- CSS custom properties pro celou paletu a typografii
+- Google Fonts přes <link>
+- SVG ikony inline
+- Intersection Observer pro animace
+- HTML5 validace formuláře + JS success state
+- Plně responzivní (breakpointy: 1200px, 768px, 480px)
+- Hamburger menu pro mobile
+
+DŮLEŽITÉ:
+- JAZYK: celý web česky
+- Booking link placeholder: [GOOGLE_CALENDAR_BOOKING_LINK]
+  s komentářem <!-- DOPLŇ BOOKING LINK Z GOOGLE CALENDAR -->
+  na každém místě výskytu
+- Kód čistý, komentovaný, snadno upravitelný
+- Design musí vypadat jako profesionální studio,
+  NE jako šablona — každý detail musí sedět
