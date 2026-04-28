@@ -307,7 +307,7 @@ export function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-4">
             {[
               {
                 initials: "S",
@@ -354,7 +354,7 @@ export function About() {
             ].map((member, i) => (
               <div
                 key={i}
-                className="group flex h-full flex-col overflow-hidden rounded-[28px] bg-white transition-all hover:-translate-y-1.5 hover:shadow-xl relative"
+                className="group relative mx-auto flex h-full w-full max-w-md flex-col overflow-hidden rounded-[26px] bg-white transition-all hover:-translate-y-1.5 hover:shadow-xl md:max-w-none"
                 style={{
                   border: "1px solid var(--armanak-border)",
                   boxShadow: "0 8px 28px rgba(15, 23, 42, 0.06), 0 2px 10px rgba(37, 99, 196, 0.04)",
@@ -367,7 +367,7 @@ export function About() {
                   }}
                 />
                 {member.photo ? (
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[6/5] overflow-hidden sm:aspect-[4/3]">
                     <img
                       src={member.photo}
                       alt={member.name}
@@ -386,7 +386,7 @@ export function About() {
                   </div>
                 ) : (
                   <div
-                    className="relative aspect-[16/11] flex items-center justify-center overflow-hidden"
+                    className="relative aspect-[6/5] flex items-center justify-center overflow-hidden sm:aspect-[16/11]"
                     style={{
                       background: "linear-gradient(135deg, rgba(37,99,196,0.08), rgba(6,182,212,0.12))",
                     }}
@@ -398,12 +398,12 @@ export function About() {
                       }}
                     />
                     <div
-                      className="relative z-10 flex h-28 w-28 items-center justify-center rounded-full"
+                      className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28"
                       style={{
                         background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
                         color: "white",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: "2.5rem",
+                        fontSize: "2.2rem",
                         fontWeight: 700,
                         boxShadow: "0 16px 36px rgba(37, 99, 196, 0.18)",
                       }}
@@ -413,12 +413,12 @@ export function About() {
                   </div>
                 )}
 
-                <div className="flex flex-1 flex-col p-8">
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
                   <h3
-                    className="text-center mb-2"
+                    className="mb-2 text-center"
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      fontSize: "1.45rem",
+                      fontSize: "clamp(1.7rem, 4vw, 2rem)",
                       fontWeight: 700,
                       color: "var(--armanak-text-primary)",
                     }}
@@ -426,12 +426,12 @@ export function About() {
                     {member.name}
                   </h3>
                   <div
-                    className="text-center mb-5"
+                    className="mb-4 text-center sm:mb-5"
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      fontSize: "0.84rem",
+                      fontSize: "0.8rem",
                       fontWeight: 700,
-                      letterSpacing: "0.08em",
+                      letterSpacing: "0.06em",
                       textTransform: "uppercase",
                       background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
                       WebkitBackgroundClip: "text",
@@ -442,7 +442,7 @@ export function About() {
                     {member.role}
                   </div>
 
-                  <div className="mb-5 flex flex-wrap justify-center gap-2">
+                  <div className="mb-4 flex flex-wrap justify-center gap-2 sm:mb-5">
                     {member.highlights.map((item: string) => (
                       <span
                         key={item}
@@ -451,7 +451,7 @@ export function About() {
                           background: "rgba(37, 99, 196, 0.06)",
                           border: "1px solid rgba(37, 99, 196, 0.08)",
                           fontFamily: "Inter, sans-serif",
-                          fontSize: "0.78rem",
+                          fontSize: "0.76rem",
                           color: "var(--armanak-text-secondary)",
                         }}
                       >
@@ -461,12 +461,12 @@ export function About() {
                   </div>
 
                   <p
-                    className="text-center mb-6 flex-1"
+                    className="mb-6 flex-1 text-center"
                     style={{
                       fontFamily: "Inter, sans-serif",
-                      fontSize: "0.95rem",
+                      fontSize: "0.92rem",
                       color: "var(--armanak-text-secondary)",
-                      lineHeight: 1.75,
+                      lineHeight: 1.7,
                     }}
                   >
                     {member.bio}
@@ -483,7 +483,7 @@ export function About() {
                           border: "1.5px solid var(--armanak-border)",
                           color: "var(--armanak-text-primary)",
                           fontFamily: "Inter, sans-serif",
-                          fontSize: "0.85rem",
+                          fontSize: "0.84rem",
                           fontWeight: 500,
                         }}
                         onMouseEnter={(e) => {
@@ -506,7 +506,7 @@ export function About() {
                           background: "rgba(37, 99, 196, 0.05)",
                           color: "var(--armanak-text-secondary)",
                           fontFamily: "Inter, sans-serif",
-                          fontSize: "0.82rem",
+                          fontSize: "0.8rem",
                           fontWeight: 500,
                         }}
                       >
