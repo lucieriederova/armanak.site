@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react";
+// 1. Přidán import React (vyřeší chyby 'React' refers to a UMD global)
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X, Calendar } from "lucide-react";
+
+// 2. Opravený import obrázku s @ts-ignore pro TypeScript
+// @ts-ignore
+import logoImg from "../../imports/arma.png";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,14 +45,15 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ border: "2px solid var(--armanak-brand-cyan)" }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--armanak-brand-cyan)" strokeWidth="1.5">
-              <path d="M3 3L12 21L21 3" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="7" y="10" width="3" height="8" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="11" y="7" width="3" height="11" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="15" y="12" width="3" height="6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          {/* Logo kontejner */}
+          <div className="w-11 h-11 flex items-center justify-center">
+            <img 
+              src={logoImg} 
+              alt="ARMANAK Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
+          
           <div>
             <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "1.1rem", color: "var(--armanak-text-primary)" }}>
               ARMANAK
@@ -89,10 +95,12 @@ export function Navigation() {
             letterSpacing: "0.02em",
             boxShadow: "0 4px 12px rgba(37, 99, 196, 0.2)",
           }}
+          // @ts-ignore
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "translateY(-1px)";
             e.currentTarget.style.boxShadow = "0 8px 24px rgba(37, 99, 196, 0.3)";
           }}
+          // @ts-ignore
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "translateY(0)";
             e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 99, 196, 0.2)";
@@ -101,7 +109,6 @@ export function Navigation() {
           <Calendar className="w-4 h-4" />
           Rezervovat
         </a>
-        {/* DOPLŇ BOOKING LINK Z GOOGLE CALENDAR */}
 
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -112,6 +119,7 @@ export function Navigation() {
         </button>
       </div>
 
+      {/* Mobilní menu */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 top-[68px] z-40 flex flex-col items-center justify-center gap-8 backdrop-blur-xl" style={{ background: "rgba(239, 246, 255, 0.95)" }}>
           {links.map((link) => (

@@ -1,4 +1,10 @@
+// 1. Přidán import React
+import React from "react";
 import { Link } from "react-router";
+
+// 2. Import loga (cesta by měla být stejná jako u navigace)
+// @ts-ignore
+import logoImg from "../../imports/arma.png";
 
 export function Footer() {
   return (
@@ -25,14 +31,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ border: "2px solid var(--armanak-brand-cyan)" }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--armanak-brand-cyan)" strokeWidth="1.5">
-                  <path d="M3 3L12 21L21 3" strokeLinecap="round" strokeLinejoin="round"/>
-                  <rect x="7" y="10" width="3" height="8" strokeLinecap="round" strokeLinejoin="round"/>
-                  <rect x="11" y="7" width="3" height="11" strokeLinecap="round" strokeLinejoin="round"/>
-                  <rect x="15" y="12" width="3" height="6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              {/* NAHRAZENO: SVG logo za IMG */}
+              <div className="w-11 h-11 flex items-center justify-center">
+                <img 
+                  src={logoImg} 
+                  alt="ARMANAK Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
+              
               <div>
                 <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "1.1rem", color: "var(--armanak-text-primary)" }}>
                   ARMANAK
