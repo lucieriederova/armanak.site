@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { TrendingUp, Target, Zap, Users } from "lucide-react";
 import sylviePhoto from "../../imports/sylvie-riederova.jpg";
 import pavlaPhoto from "../../imports/pavla-riederova.jpg";
+import luciePhoto from "../../imports/lucie-profile.jpg";
 
 export function About() {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -306,41 +307,57 @@ export function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {[
               {
                 initials: "S",
                 name: "Sylvie PhD.",
                 role: "Zakladatelka & CFO poradkyně",
-                bio: "25 let v české finanční praxi. Expertka na strategické finanční řízení a daňovou optimalizaci. Pomáhá firmám růst s jasným finančním kompasem.",
+                bio: "Vede strategické finance, nastavuje finanční řízení a pomáhá firmám proměňovat čísla v rozhodnutí s dlouhodobým dopadem.",
                 linkedin: "https://www.linkedin.com/in/sylvie-riederova/",
                 photo: sylviePhoto,
-                photoPosition: "center 24%",
+                photoPosition: "center 18%",
+                photoScale: 1.18,
+                highlights: ["Strategie", "CFO", "Daně"],
               },
               {
                 initials: "P",
                 name: "Pavla",
                 role: "Finanční specialistka",
-                bio: "Odbornice na účetnictví, mzdy a finanční systémy. Specialistka na digitalizaci procesů a implementaci cloudových řešení pro maximální efektivitu.",
+                bio: "Propojuje účetnictví, mzdy a finanční systémy do funkčního celku. Dbá na přesnost, efektivitu a hladký chod každodenních procesů.",
                 linkedin: "https://www.linkedin.com/in/pavla-riederova/",
                 photo: pavlaPhoto,
-                photoPosition: "center 32%",
+                photoPosition: "center 24%",
+                photoScale: 1.22,
+                highlights: ["Účetnictví", "Mzdy", "Systémy"],
               },
               {
                 initials: "V",
                 name: "Vilém",
                 role: "Finanční analytik",
-                bio: "Expert na finanční analýzy a business intelligence. Transformuje data do strategických doporučení a pomáhá firmám identifikovat růstové příležitosti.",
+                bio: "Převádí finanční data do přehledných analýz, reportů a doporučení. Pomáhá vedení rychleji vidět souvislosti i růstové příležitosti.",
                 linkedin: "",
                 photo: "",
+                highlights: ["Analýzy", "Reporting", "BI"],
+              },
+              {
+                initials: "L",
+                name: "Lucie",
+                role: "IT podpora & PR",
+                bio: "Zajišťuje technické zázemí, digitální podporu a komunikaci značky. Pomáhá, aby ARMANAK fungoval spolehlivě uvnitř i srozumitelně navenek.",
+                linkedin: "https://www.linkedin.com/in/lucie-riederov%C3%A1-346779392/",
+                photo: luciePhoto,
+                photoPosition: "26% 28%",
+                photoScale: 1.3,
+                highlights: ["IT podpora", "PR", "Komunikace"],
               },
             ].map((member, i) => (
               <div
                 key={i}
-                className="bg-white p-10 rounded-2xl transition-all hover:shadow-lg hover:-translate-y-1 relative overflow-hidden"
+                className="group flex h-full flex-col overflow-hidden rounded-[28px] bg-white transition-all hover:-translate-y-1.5 hover:shadow-xl relative"
                 style={{
                   border: "1px solid var(--armanak-border)",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)",
+                  boxShadow: "0 8px 28px rgba(15, 23, 42, 0.06), 0 2px 10px rgba(37, 99, 196, 0.04)",
                 }}
               >
                 <div
@@ -350,99 +367,154 @@ export function About() {
                   }}
                 />
                 {member.photo ? (
-                  <div
-                    className="w-24 h-24 rounded-full overflow-hidden mb-6 mx-auto"
-                    style={{
-                      boxShadow: "0 10px 24px rgba(37, 99, 196, 0.16)",
-                      border: "3px solid rgba(255, 255, 255, 0.95)",
-                    }}
-                  >
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: member.photoPosition }}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{
+                        objectPosition: member.photoPosition,
+                        transform: `scale(${member.photoScale ?? 1})`,
+                      }}
+                    />
+                    <div
+                      className="absolute inset-x-0 bottom-0 h-24"
+                      style={{
+                        background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.82) 100%)",
+                      }}
                     />
                   </div>
                 ) : (
                   <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto"
+                    className="relative aspect-[16/11] flex items-center justify-center overflow-hidden"
                     style={{
-                      background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
-                      color: "white",
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      fontSize: "1.8rem",
-                      fontWeight: 700,
+                      background: "linear-gradient(135deg, rgba(37,99,196,0.08), rgba(6,182,212,0.12))",
                     }}
                   >
-                    {member.initials}
-                  </div>
-                )}
-                <h3
-                  className="text-center mb-2"
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: "1.4rem",
-                    fontWeight: 700,
-                    color: "var(--armanak-text-primary)",
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <div
-                  className="text-center mb-4"
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {member.role}
-                </div>
-                <p
-                  className="text-center mb-6"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "0.95rem",
-                    color: "var(--armanak-text-secondary)",
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {member.bio}
-                </p>
-                {member.linkedin ? (
-                  <div className="text-center">
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-6 py-2.5 rounded-full transition-all"
+                    <div
+                      className="absolute inset-0"
                       style={{
-                        border: "1.5px solid var(--armanak-border)",
-                        color: "var(--armanak-text-primary)",
-                        fontFamily: "Inter, sans-serif",
-                        fontSize: "0.85rem",
-                        fontWeight: 500,
+                        background: "radial-gradient(circle at 30% 30%, rgba(37,99,196,0.12), transparent 45%)",
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "var(--armanak-brand-blue)";
-                        e.currentTarget.style.color = "var(--armanak-brand-blue)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "var(--armanak-border)";
-                        e.currentTarget.style.color = "var(--armanak-text-primary)";
+                    />
+                    <div
+                      className="relative z-10 flex h-28 w-28 items-center justify-center rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
+                        color: "white",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontSize: "2.5rem",
+                        fontWeight: 700,
+                        boxShadow: "0 16px 36px rgba(37, 99, 196, 0.18)",
                       }}
                     >
-                      LinkedIn
-                    </a>
+                      {member.initials}
+                    </div>
                   </div>
-                ) : null}
+                )}
+
+                <div className="flex flex-1 flex-col p-8">
+                  <h3
+                    className="text-center mb-2"
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: "1.45rem",
+                      fontWeight: 700,
+                      color: "var(--armanak-text-primary)",
+                    }}
+                  >
+                    {member.name}
+                  </h3>
+                  <div
+                    className="text-center mb-5"
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: "0.84rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    {member.role}
+                  </div>
+
+                  <div className="mb-5 flex flex-wrap justify-center gap-2">
+                    {member.highlights.map((item: string) => (
+                      <span
+                        key={item}
+                        className="rounded-full px-3 py-1.5"
+                        style={{
+                          background: "rgba(37, 99, 196, 0.06)",
+                          border: "1px solid rgba(37, 99, 196, 0.08)",
+                          fontFamily: "Inter, sans-serif",
+                          fontSize: "0.78rem",
+                          color: "var(--armanak-text-secondary)",
+                        }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p
+                    className="text-center mb-6 flex-1"
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "0.95rem",
+                      color: "var(--armanak-text-secondary)",
+                      lineHeight: 1.75,
+                    }}
+                  >
+                    {member.bio}
+                  </p>
+
+                  {member.linkedin ? (
+                    <div className="text-center">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block rounded-full px-6 py-2.5 transition-all"
+                        style={{
+                          border: "1.5px solid var(--armanak-border)",
+                          color: "var(--armanak-text-primary)",
+                          fontFamily: "Inter, sans-serif",
+                          fontSize: "0.85rem",
+                          fontWeight: 500,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "var(--armanak-brand-blue)";
+                          e.currentTarget.style.color = "var(--armanak-brand-blue)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "var(--armanak-border)";
+                          e.currentTarget.style.color = "var(--armanak-text-primary)";
+                        }}
+                      >
+                        LinkedIn
+                      </a>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span
+                        className="inline-block rounded-full px-6 py-2.5"
+                        style={{
+                          background: "rgba(37, 99, 196, 0.05)",
+                          color: "var(--armanak-text-secondary)",
+                          fontFamily: "Inter, sans-serif",
+                          fontSize: "0.82rem",
+                          fontWeight: 500,
+                        }}
+                      >
+                        Součást týmu ARMANAK
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>

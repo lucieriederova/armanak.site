@@ -24,7 +24,7 @@ export function Footer() {
               backgroundClip: "text",
             }}
           >
-            info@armanak.cz
+            armanak.info@gmail.com
           </a>
         </div>
 
