@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { TrendingUp, Target, Zap, Users } from "lucide-react";
+import sylviePhoto from "../../imports/sylvie-riederova.jpg";
+import pavlaPhoto from "../../imports/pavla-riederova.jpg";
 
 export function About() {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -311,18 +313,26 @@ export function About() {
                 name: "Sylvie PhD.",
                 role: "Zakladatelka & CFO poradkyně",
                 bio: "25 let v české finanční praxi. Expertka na strategické finanční řízení a daňovou optimalizaci. Pomáhá firmám růst s jasným finančním kompasem.",
+                linkedin: "https://www.linkedin.com/in/sylvie-riederova/",
+                photo: sylviePhoto,
+                photoPosition: "center 24%",
               },
               {
                 initials: "P",
                 name: "Pavla",
                 role: "Finanční specialistka",
                 bio: "Odbornice na účetnictví, mzdy a finanční systémy. Specialistka na digitalizaci procesů a implementaci cloudových řešení pro maximální efektivitu.",
+                linkedin: "https://www.linkedin.com/in/pavla-riederova/",
+                photo: pavlaPhoto,
+                photoPosition: "center 32%",
               },
               {
                 initials: "V",
                 name: "Vilém",
                 role: "Finanční analytik",
                 bio: "Expert na finanční analýzy a business intelligence. Transformuje data do strategických doporučení a pomáhá firmám identifikovat růstové příležitosti.",
+                linkedin: "",
+                photo: "",
               },
             ].map((member, i) => (
               <div
@@ -339,18 +349,35 @@ export function About() {
                     background: "linear-gradient(90deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
                   }}
                 />
-                <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto"
-                  style={{
-                    background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
-                    color: "white",
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: "1.8rem",
-                    fontWeight: 700,
-                  }}
-                >
-                  {member.initials}
-                </div>
+                {member.photo ? (
+                  <div
+                    className="w-24 h-24 rounded-full overflow-hidden mb-6 mx-auto"
+                    style={{
+                      boxShadow: "0 10px 24px rgba(37, 99, 196, 0.16)",
+                      border: "3px solid rgba(255, 255, 255, 0.95)",
+                    }}
+                  >
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: member.photoPosition }}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto"
+                    style={{
+                      background: "linear-gradient(135deg, var(--armanak-brand-blue), var(--armanak-brand-cyan))",
+                      color: "white",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: "1.8rem",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {member.initials}
+                  </div>
+                )}
                 <h3
                   className="text-center mb-2"
                   style={{
@@ -389,29 +416,33 @@ export function About() {
                 >
                   {member.bio}
                 </p>
-                <div className="text-center">
-                  <a
-                    href="#"
-                    className="inline-block px-6 py-2.5 rounded-full transition-all"
-                    style={{
-                      border: "1.5px solid var(--armanak-border)",
-                      color: "var(--armanak-text-primary)",
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "0.85rem",
-                      fontWeight: 500,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "var(--armanak-brand-blue)";
-                      e.currentTarget.style.color = "var(--armanak-brand-blue)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "var(--armanak-border)";
-                      e.currentTarget.style.color = "var(--armanak-text-primary)";
-                    }}
-                  >
-                    LinkedIn
-                  </a>
-                </div>
+                {member.linkedin ? (
+                  <div className="text-center">
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2.5 rounded-full transition-all"
+                      style={{
+                        border: "1.5px solid var(--armanak-border)",
+                        color: "var(--armanak-text-primary)",
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: "0.85rem",
+                        fontWeight: 500,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--armanak-brand-blue)";
+                        e.currentTarget.style.color = "var(--armanak-brand-blue)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "var(--armanak-border)";
+                        e.currentTarget.style.color = "var(--armanak-text-primary)";
+                      }}
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>

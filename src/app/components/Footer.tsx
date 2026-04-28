@@ -12,7 +12,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
           <a
-            href="mailto:info@armanak.cz"
+            href="mailto:armanak.info@gmail.com"
             className="inline-block gradient-text-hover transition-all"
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",

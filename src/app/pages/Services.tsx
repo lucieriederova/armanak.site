@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { Check, Clock, MessageCircle, CheckCircle, Calendar } from "lucide-react";
+import { GOOGLE_BOOKING_URL } from "../lib/booking";
 
 export function Services() {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -520,7 +521,7 @@ export function Services() {
           </div>
 
           <a
-            href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID"
+            href={GOOGLE_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 rounded-full text-white text-center transition-all mb-4"

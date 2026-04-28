@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X, Calendar } from "lucide-react";
+import { GOOGLE_BOOKING_URL } from "../lib/booking";
 
 // 2. Opravený import obrázku s @ts-ignore pro TypeScript
 // @ts-ignore
@@ -83,7 +84,7 @@ export function Navigation() {
         </div>
 
         <a
-          href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID"
+          href={GOOGLE_BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white transition-all"
@@ -137,7 +138,7 @@ export function Navigation() {
             </Link>
           ))}
           <a
-            href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID"
+            href={GOOGLE_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white mt-4"
